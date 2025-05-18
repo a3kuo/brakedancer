@@ -1,3 +1,9 @@
+:root {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  
+}
+
 html,
 body {
   margin: 0;
@@ -21,5 +27,86 @@ body {
   z-index: 1;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  pointer-events: none;  
 }
+
+#map circle {
+  pointer-events: auto;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  fill: var(--color);
+}
+
+#head-filter {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  width: 100%;
+}
+
+#head-filter label {
+  display: flex;
+  margin-left: auto;
+  width: 50%;
+}
+
+#head-filter input {
+  width: 84%;
+}
+
+#filter {
+  display: block;
+}
+
+#filter time {
+  display: block;
+}
+
+em {
+  display: block;
+  color: gray;
+  font-style: italic;
+}
+
+.legend {
+  display: flex;
+  margin-block: 1em;
+  gap: 1px;
+  width: 100%;
+}
+
+.legend > div {
+  flex: 1;
+  color: white;
+  font-weight: bold;
+  font-size: 120%;
+  padding: 5px 20px;
+}
+
+.legend > div[style*="--departure-ratio: 1"] {
+  background-color: var(--color-departures); 
+  text-align: left;
+}
+
+.legend > div[style*="--departure-ratio: 0"] {
+  background-color: var(--color-arrivals); 
+  text-align: right;
+}
+
+.legend > div[style*="--departure-ratio: 0.5"] {
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  background-color: var(--color); 
+  text-align: center;
+}
+
+
+/* * {
+  outline: solid red 1px;
+} */

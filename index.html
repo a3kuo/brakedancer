@@ -15,9 +15,21 @@
     <link rel="stylesheet" href="map.css" />
   </head>
   <body>
-    <h1>🚴🏼‍♀️ Bikewatching</h1>
+    <header id="head-filter">
+      <h1>🚴🏼‍♀️ Bikewatching</h1>
+      <label for="#time-slider">Filter by time:<input id="#time-slider" type=range min="-1" max="1440" value="-1">
+    </header>
+    <div id="filter"></div>
+      <time id="#selected-time">time</time></label>
+      <em id="#any-time">(any time)</em>
+    </div>
     <div id="map">
         <svg></svg>
+    </div>
+    <div class="legend">
+      <div style="--departure-ratio: 1">More departures</div>
+      <div style="--departure-ratio: 0.5">Balanced</div>
+      <div style="--departure-ratio: 0">More arrivals</div>
     </div>
   </body>
 </html>
